@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css?family=Montaga&display=swap');
+
+body{
+   font-family: Arial, Helvetica, sans-serif; 
+   background-color: rgb(167, 173, 180);
+}
+
+.titulo{
+    color: rgb(122, 59, 36);
+    text-align: center;
+    font-family: 'Montaga', serif;
+}
+
+h1{
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.img-produto{
+    width: 100px;
+    height: 80px;
+    position: absolute;
+    z-index: 1;
+    right: 2px;
+}
+
+.img-del{
+    width: 30px;
+    height: 30px;
+}
+
+.div-pai{
+    z-index: 999;
+    width: 600px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.div-img{
+    width: 20%;
+    right: 0px;
+}
+
+.div-txt{
+    width: 80%;
+    left: 0px;
+}
