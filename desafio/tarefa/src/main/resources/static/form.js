@@ -11,27 +11,19 @@ function obtemTarefaDoFormulario(form) {
 }
 
 function verificarCheckBox(tarefa) {
-    console.log(tarefa.status);
-    //let check = document.querySelector(".status");    
-    
-    //for (let i=0;i<tarefa.status.length;i++){ 
-        if (tarefa.status == true){ 
+    //console.log(tarefa.status);
+    if (tarefa.status == true){ 
            
-            ListaConcluidoTabela(tarefa);
-
-        }  else {
-            console.log('no');
-
-           // CheckBox Não Marcad... Faça alguma outra coisa...
-        }
-    //}
+        ListaConcluidoTabela(tarefa);
+    }  else {
+        console.log('no');
+    }
 }
 
 function atualizaTarefas() {
-    let lista = document.querySelector(".tb-tarefas");
-    //lista.innerHTML = '';
+    //let lista = document.querySelector(".tb-tarefas");
     
-    const url = 'https://api.conexaonfe.com.br/v1/tarefas';
+    const url = '/tarefas';
 
     fetch(url, {
         method: 'GET',
@@ -68,7 +60,7 @@ function criaDadoTabela(item) {
     tdnome.classList.add("nome");
 
     tableTr.appendChild(tdnome);
-    tdnome.textContent = item.tarefa;
+    tdnome.textContent = item.name;
 
     let tdstatus = document.createElement("td");
     tdstatus.classList.add("status");
@@ -87,10 +79,8 @@ function criaDadoTabela(item) {
 }
 
 function ListaConcluidoTabela(tarefa) {
-    console.log(tarefa);
 
-    
-    //let tarefaTr = criaDadoTabela(tarefa);
+    // Cria conteudo
     let tableTr = document.createElement("tr");
     tableTr.classList.add("tb-tr");
 
@@ -114,28 +104,35 @@ function ListaConcluidoTabela(tarefa) {
     tableTr.appendChild(tdstatus);
 
     let tabela = document.querySelector(".novatable");
-   
     tabela.appendChild(tableTr);
     return tableTr;
 }
 
 function addTarefaTela(item) {
-    console.log("addtarefa");
+    //console.log("addtarefa");
 
     let itemTb = criaDadoTabela(item);
     let tabela = document.querySelector(".tb-tarefas");
     tabela.appendChild(itemTb);
 }
 
-atualizaTarefas() ;
+function limparEventosHoje(tarefa){
+    let table = document.querySelector(".novatable");
+ 
+    if (tarefa !== undefined) {
+        table.removeChild(tarefa);
+    }
+ 
+ }
 
 botaoConcluidos.addEventListener("click", function (){
-  
+    console.log('teste');
     event.preventDefault();
+    document.querySelectorAll(".novatable .tb-tr").forEach(limparEventosHoje);
   
     let form = document.querySelectorAll(".tb-tr");
     let tarefa = form.forEach(obtemTarefaDoFormulario);
-    
-    
-    //ListaConcluidoTabela(tarefa);
+
   });
+
+ atualizaTarefas() ;
