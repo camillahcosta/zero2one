@@ -3,12 +3,12 @@
 <html lang="pt-br">
 <head>
     <meta charset="utf-8">
-    <title>Tarefas</title>
+    <h1>Tarefas</h1>
     <link href="./estilo.css" type="text/css" rel="stylesheet">
 </head>
     <body>
         <div class="div-pai">
-            <p>Tarefas</p>
+            <h2>Tarefas</h2>
         </div>
 
         <div class="div-pai">
@@ -52,7 +52,7 @@
         </div>
         <br><br>
         <div class="div-pai">
-            <p>Concluídos</p>
+            <h2>Concluídos</h2>
             <table  border= '1' class='novatable'>
                 <tr>
                     <td>Tarefa</td>
@@ -62,6 +62,38 @@
             </table>
 
         </div>
-        <script src="form.js" ></script> 
+
+        <div class="div-pai">
+
+            <h2>Adicionar Tarefa</h2>
+
+            <form id="form-insert" method="POST">
+                <table class="adiciona">
+                    <tr class="add-tr">
+                        <td><label for="idins">ID</label></td>
+                        <td><input type="text" name="id" id="idins" cols="30" rows="10" placeholder="ID"></td>
+                    </tr>
+                    <tr class="add-tr">
+                        <td><label for="nameins">Nome</label></td>
+                        <td><input type="text" name="name" id="nameins" placeholder="Nome"></td>
+                    </tr>
+                    <tr class="add-tr">
+                        <td><label for="statusins">Status</label></td>
+                        <td><input type="checkbox" name="status" id="statusins" placeholder="Status"></td>
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td>
+                            <button id="adicionar-tarefa" type="submit">Adicionar</button>
+                            <button type="reset">Limpar</button>
+                            <!--<button id="remover-produto" type="submit">Delete</button>-->
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+
+        <script src="form.js" ></script>
     </body>
 </html>

@@ -1,4 +1,5 @@
 let botaoConcluidos = document.querySelector("#listar-concluidos");
+let botaoAdiciona = document.querySelector("#adicionar-tarefa");
 
 
 
@@ -70,8 +71,7 @@ function criaDadoTabela(item) {
     status.check = item.status;
     status.classList.add("status");
 
-    tdstatus.appendChild(status);    
-    
+    tdstatus.appendChild(status);
 
     tableTr.appendChild(tdstatus);
 
@@ -125,14 +125,48 @@ function limparEventosHoje(tarefa){
  
  }
 
+
+function obtemNovoItem(form) {
+    let tarefa = {
+    id: form.idins.value,
+    name: form.nameins.value,
+    status: form.statusins.checked}
+
+    return tarefa;
+}
+
+function uploadItem(tarefa) {
+
+     const url = '/tarefas';
+
+     fetch(url, {
+           method: 'POST',
+           headers: {
+                  'Authorization': 'fff',
+                  'Content-Type': 'application/json'
+           },
+           body: JSON.stringify(tarefa)
+     })
+}
+
 botaoConcluidos.addEventListener("click", function (){
-    console.log('teste');
+
     event.preventDefault();
     document.querySelectorAll(".novatable .tb-tr").forEach(limparEventosHoje);
-  
+
     let form = document.querySelectorAll(".tb-tr");
     let tarefa = form.forEach(obtemTarefaDoFormulario);
 
   });
+
+botaoAdiciona.addEventListener("click", function (){
+     event.preventDefault();
+
+     let form = document.querySelector("#form-insert");
+     let item = obtemNovoItem(form);
+
+     uploadItem(item);
+});
+
 
  atualizaTarefas() ;
